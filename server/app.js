@@ -16,7 +16,7 @@ app.use(morgan('tiny'));
 app.use('api/routes', homeRoutes);
 
 app.get('*', function(req,res){
-	res.sendFile(path.join(_dirname, "../client", "index.html"));
+	res.sendFile(path.join(__dirname, "../client", "index.html"));
 });
 
 app.listen(3000, function(){
