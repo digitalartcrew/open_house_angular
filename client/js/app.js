@@ -8,14 +8,14 @@ app.config(function($routeProvider, $locationProvider){
 	})
 	.when('/homes/new',{
 		templateUrl: 'templates/new.html',
-		controller: NewHomesController
+		controller: NewHomeController
 	})
 	.when('/homes/:id/edit', {
 		templateUrl: 'templates/edit.html',
-		controller: EditHomesController
+		controller: EditHomeController
 	})
 	.when('/homes/:id/show', {
 		templateUrl: 'templates/show.html',
-		controller: ShowHomesController
+		controller: ShowHomeController
 	});
 });
