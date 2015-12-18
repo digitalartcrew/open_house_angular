@@ -1,3 +1,5 @@
+var app = angular.module("homeApp");
+
 app.service("homeService", function($http){
 	return {
 		getHomes: function(){
@@ -15,6 +17,5 @@ app.service("homeService", function($http){
 		deleteHome: function(home){
 			return $http.delete('api/homes/' + id);
 		}
-
 	};
 });
