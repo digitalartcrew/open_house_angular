@@ -41,3 +41,5 @@ router.delete('/:id', function(req,res){
 		res.status(200).send(home);
 	});
 });
+
+module.exports = router;

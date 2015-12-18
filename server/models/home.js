@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-var homeSchema = new mongoose.homeSchema({
+var homeSchema = new mongoose.Schema({
 	address: String,
 	city: String,
 	state: String,
