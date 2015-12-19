@@ -4,6 +4,7 @@ var express = require('express'),
 		bodyParser = require('body-parser'),
 		methodOverride = require('method-override'),
 		morgan = require("morgan"),
+		homeRoutes = require("./routes/homes"),
 		path = require("path");
 
 // access client assets from index view (line 32)
@@ -20,6 +21,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 // use method-override
 app.use(methodOverride('_method'));
+
+app.use('/api/homes', homeRoutes);
 
 // Set home page route
 app.get('*', function(req, res) {

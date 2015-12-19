@@ -2,17 +2,17 @@ var app = angular.module("homeApp");
 
 app.controller("HomesController", function($scope, homeService){
 	console.log('homes controller');
-	$scope.homes = {};
-	// // console.log("fuck why is thos not happening???");
-	// debugger;
-	// homeService.getHomes().then(function(homes){
-	// 	$scope.homes = homes.data;
-	// }).catch(function(err){
-	// 	$scope.errors = err;
-	// });
+	// $scope.homes = {};
+
+
+	homeService.getHomes().then(function(homes){
+		$scope.homes = homes.data;
+	}).catch(function(err){
+		$scope.errors = err;
+	});
 });
 
-app.controller("NewHomeController", function($scope, homeService){
+app.controller("NewHomeController", function($scope, $location, homeService){
 	$scope.addHome = function(home){
 		homeService.addHome(home).then(function(){
 		$location.path('/homes');
@@ -20,15 +20,17 @@ app.controller("NewHomeController", function($scope, homeService){
 	};
 });
 
-app.controller("ShowHomeController", function($scope, homeService){
+app.controller("ShowHomeController", function($scope, $routeParams, homeService){
+		var id = $routeParams.id;
 		homeService.getHome($routeParams.id).then(function(home){
 		$scope.home = home.data;
 	});
 
 });
 
-app.controller("EditHomeController", function($scope, homeService){
-		homeService.getHome($routeParams.id).then(function(home){
+app.controller("EditHomeController", function($scope, $routeParams, homeService){
+		console.log($routeParams.id + "This is is");
+		homeService.editHome($routeParams.id).then(function(home){
 		$scope.home = home.data;
 	});
 
