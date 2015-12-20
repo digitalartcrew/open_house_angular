@@ -1,4 +1,10 @@
-<h1>See some information about {{home}}</h1>
+<div class="container">
+<div class="row">
+<h1>{{home.address}}{{home.city}} {{home.state}} {{home.zip}}</h1>
+<div class="col-md-10-offset-1">
 
-<a href="/homes">See all homes</a>
-<a ng-href="/homes/{{home._id}}/edit">Edit this home</a>
+<a href="/homes"><button>Back to Homes</button></a>
+<a ng-href="/homes/{{home._id}}/edit"><button>Edit this home</button></a>
+</div>
+</div>
+</div>

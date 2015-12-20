@@ -1,11 +1,16 @@
-<h1>Home List</h1>
-
+<div class="container">
+<div class="row">
+<h1>Homes I would like to visit:</h1>
+<div class="col-md-10-offset-1">
 <ul>
   <li ng-repeat="home in homes">
-    <p><span>{{home.address}}</span><span>{{home.city}}</span><span>{{home.state}}</span><span>{{home.zip}}</span></p>
-     <button ng-click="deleteHome(home)">X</button>
-    <a ng-href="/homes/{{home._id}}/edit">Edit {{home.address}}</a>
+    <p><a ng-href="/homes/{{home._id}}/">{{home.address}}</a> {{home.city}} {{home.state}} {{home.zip}}</p>
+     <button ng-click="deleteHome(home)">Delete</button>
+    <a ng-href="/homes/{{home._id}}/edit"><button>Edit {{home.address}}</button></a>
   </li>
 </ul>
 
-<a href="/homes/new">Create a new home</a>
+<a href="/homes/new"><button>Add Home</button></a>
+</div>
+</div>
+</div>
