@@ -3,6 +3,7 @@
 <ul>
   <li ng-repeat="home in homes">
     <p><span>{{home.address}}</span><span>{{home.city}}</span><span>{{home.state}}</span><span>{{home.zip}}</span></p>
+     <button ng-click="deleteHome(home)">X</button>
     <a ng-href="/homes/{{home._id}}/edit">Edit {{home.address}}</a>
   </li>
 </ul>

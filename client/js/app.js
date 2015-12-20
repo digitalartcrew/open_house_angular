@@ -1,29 +1,20 @@
-var app = angular.module("homeApp",['ngRoute']);
+var app = angular.module("homeApp",['ngRoute','ngResource']);
 
-app.config(['$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider){
-	$routeProvider
-	.when('/',{
-		templateUrl: "templates/index.html",
-		controller: "HomesController"
-	})
-	.when('/homes', {
-		templateUrl: 'templates/index.html',
-		controller: 'HomesController'
-	})
-	.when('/homes/new',{
-		templateUrl: 'templates/new.html',
-		controller: 'NewHomeController'
-	})
-	.when('/homes/:id/edit', {
-		templateUrl: 'templates/edit.html',
-		controller: 'EditHomeController'
-	})
-	.when('/homes/:id/show', {
-		templateUrl: 'templates/show.html',
-		controller: 'ShowHomeController'
-	})
-	.otherwise({redirectTo:"/"});
-	
-	$locationProvider.html5Mode(true);
-
-}]);
+app.config(function($routeProvider, $locationProvider, $httpProvider){
+  $routeProvider.when('/', {
+    controller: "HomesController",
+    templateUrl: "templates/index.html"
+  }).when('/homes/new', {
+    controller: "NewHomeController",
+    templateUrl: "templates/new.html"
+  }).when('/homes/:id', {
+    controller: "HomeController",
+    templateUrl: "templates/show.html"
+  }).when('/homes/:id/edit', {
+    controller: "EditHomeController",
+    templateUrl: "templates/edit.html"
+  }).otherwise({
+    redirectTo:'/'
+  });
+  $locationProvider.html5Mode(true);
+});

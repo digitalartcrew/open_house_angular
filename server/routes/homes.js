@@ -29,7 +29,7 @@ router.get('/:id', function(req,res){
 //Update PUT /api/homes/:id
 
 router.put('/:id',function(req,res){
-	db.Home.findByAndUpdate(req.params.id,req.body, function(err,home){
+	db.Home.findByIdAndUpdate(req.params.id,req.body, function(err,home){
 		res.status(200).send(home);
 	});
 });
@@ -37,7 +37,7 @@ router.put('/:id',function(req,res){
 //Delete 
 
 router.delete('/:id', function(req,res){
-	db.Home.findByAndRemove(req.params.id, function(err,home){
+	db.Home.findByIdAndRemove(req.params.id, function(err,home){
 		res.status(200).send(home);
 	});
 });

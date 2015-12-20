@@ -1,8 +1,8 @@
 <h1>Add a new home!</h1>
-<form action="javascript:void(0)" ng-submit="addHome(home)">
+<form action="javascript:void(0)" ng-submit="createHome(home)">
 
 
-<form action="javascript:void(0)" ng-submit="addHome(home)">
+<form action="javascript:void(0)" ng-submit="createHome(home)">
 	<label for="address">Address</label>
 	<input type="text" ng-model="home.address" id="address">
 	<label for="city">City</label>
@@ -13,3 +13,6 @@
 	<input type="text" ng-model="home.zip" id="zip">
 	<input type="submit" value="Add Home">
 </form>
+
+
+<a href="/homes">See all homes</a>

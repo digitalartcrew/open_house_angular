@@ -1,50 +1,42 @@
 var app = angular.module("homeApp");
 
-app.controller("HomesController", function($scope, homeService){
-	console.log('homes controller');
-	// $scope.homes = {};
+app.controller("HomesController", ['$scope', '$location', 'HomeService', function($scope, $location, HomeService){
+
+  $scope.homes = HomeService.query();
+
+  $scope.deleteHome = function(home){
+    home.$delete(function(home){
+      $scope.homes.splice($scope.homes.indexOf(home),1);
+    });
+  };
+}]);
+
+app.controller("NewHomeController", ['$scope', '$location', 'HomeService', function($scope, $location, HomeService){
+  $scope.createHome = function(home){
+    HomeService.save(home, function(){
+      $location.path('/');
+    });
+  };
+}]);
+
+app.controller("HomeController", ['$scope', '$location', '$routeParams', 'HomeService', function($scope, $location, $routeParams, HomeService){
+  HomeService.get({id: $routeParams.id}, function(home){
+    $scope.home = home;
+  }, function(err){
+    $location.path('/');
+  });
+}]);
 
 
-	homeService.getHomes().then(function(homes){
-		$scope.homes = homes.data;
-	}).catch(function(err){
-		$scope.errors = err;
-	});
-});
-
-app.controller("NewHomeController", function($scope, $location, homeService){
-	$scope.addHome = function(home){
-		homeService.addHome(home).then(function(){
-		$location.path('/homes');
-	});
-	};
-});
-
-app.controller("ShowHomeController", function($scope, $routeParams, homeService){
-		var id = $routeParams.id;
-		homeService.getHome($routeParams.id).then(function(home){
-		$scope.home = home.data;
-	});
-
-});
-
-app.controller("EditHomeController", function($scope, $routeParams, homeService){
-		console.log($routeParams.id + "This is is");
-		homeService.editHome($routeParams.id).then(function(home){
-		$scope.home = home.data;
-	});
-
-
-$scope.editHome = function(home){
-	homeService.editHome(home).then(function(){
-		$location.path('/homes');
-	});
-};
-
-$scope.deleteHome = function(home){
-	homeService.deleteHome(home._id).then(function(data){
-		$location.path('/homes');
-	});
-};
-
-});
+app.controller("EditHomeController", ['$scope', '$location', '$routeParams', 'HomeService', function($scope, $location, $routeParams, HomeService){
+  HomeService.get({id: $routeParams.id},function(home){
+    $scope.home = home;
+  }, function(err){
+    $location.path('/');
+  });
+  $scope.edithome = function(home){
+    $scope.home.$update(function(){
+      $location.path('/');
+    });
+  };
+}]);
