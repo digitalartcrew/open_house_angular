@@ -34,7 +34,8 @@ app.controller("EditHomeController", ['$scope', '$location', '$routeParams', 'Ho
   }, function(err){
     $location.path('/');
   });
-  $scope.edithome = function(home){
+  $scope.editHome = function(home){
+  	console.log("This is working!");
     $scope.home.$update(function(){
       $location.path('/');
     });

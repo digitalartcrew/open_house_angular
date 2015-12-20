@@ -30,7 +30,8 @@ router.get('/:id', function(req,res){
 
 router.put('/:id',function(req,res){
 	db.Home.findByIdAndUpdate(req.params.id,req.body, function(err,home){
-		res.status(200).send(home);
+		 if (err) res.status(500).send({error: "Double check for error"});
+		res.status(201).send(home);
 	});
 });
 
