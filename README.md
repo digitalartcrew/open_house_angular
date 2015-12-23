@@ -1,5 +1,7 @@
 Open House Angular
 
+Link to application: http://open-house-app.herokuapp.com/
+
 Open House Angular allows a user to create a list of homes they are interested in visiting. Users having the capability of adding, editing, showing and deleting a home. The application is created using the MEAN stack. MongoDB, AngularJS, Express and NodeJS using MVC(model, view, controller) architecture.
 
 File structure consists of a client > server > package.json > .gitignore
